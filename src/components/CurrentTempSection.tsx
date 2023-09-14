@@ -6,6 +6,7 @@ import RecentTemps from "./RecentTemps";
 import Image from "next/image";
 import mapPinIcon from "/public/icons/mapPin.svg";
 import clockIcon from "/public/icons/clock.svg";
+import { convertTimeDoubleDigits } from "@/utils/convertTimeDoubleDigits";
 
 interface CurrentTempSectionProps {
   tempInfo: number | undefined;
@@ -54,13 +55,25 @@ const CurrentTempSection = ({
               <div className="flex flex-col">
                 <h3 className="text-center">{`${
                   currentTimeStamp
-                    ? `${currentTimeStamp?.getMonth()}/${currentTimeStamp?.getDay()}/${currentTimeStamp?.getFullYear()}`
+                    ? `${convertTimeDoubleDigits(
+                        currentTimeStamp?.getMonth() + 1
+                      )}/${convertTimeDoubleDigits(
+                        currentTimeStamp?.getDay()
+                      )}/${convertTimeDoubleDigits(
+                        currentTimeStamp?.getFullYear()
+                      )}`
                     : "--/--/----"
                 } `}</h3>
                 <h3 className="text-center">
                   {`${
                     currentTimeStamp
-                      ? `${currentTimeStamp?.getHours()}:${currentTimeStamp?.getMinutes()}:${currentTimeStamp?.getSeconds()}`
+                      ? `${convertTimeDoubleDigits(
+                          currentTimeStamp?.getHours()
+                        )}:${convertTimeDoubleDigits(
+                          currentTimeStamp?.getMinutes()
+                        )}:${convertTimeDoubleDigits(
+                          currentTimeStamp?.getSeconds()
+                        )}`
                       : "--:--:--"
                   } `}
                 </h3>
