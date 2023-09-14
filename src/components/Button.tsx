@@ -12,7 +12,9 @@ const Button = ({ name, imagePath, callbackFn }: ButtonProps) => {
       ${
         name === "Pause"
           ? "bg-red-light hover:bg-red-500"
-          : "bg-green-light hover:bg-green-dark"
+          : name === "Play"
+          ? "bg-green-light hover:bg-green-dark"
+          : "bg-orange-light hover:bg-orange-dark"
       }`}
     >
       <p>{name}</p>
