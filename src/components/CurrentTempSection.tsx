@@ -26,7 +26,7 @@ const CurrentTempSection = (): JSX.Element => {
   };
 
   return (
-    <div className="flex flex-col tablet:flex-row desktop:flex-col tablet:justify-center w-full desktop:w-[28rem] mx-auto tablet:space-x-4 desktop:space-x-0 desktop:mx-2">
+    <div className="flex flex-col tablet:flex-row desktop:flex-col tablet:justify-center desktop:justify-start w-full desktop:w-[28rem] mx-auto tablet:space-x-4 desktop:space-x-0 desktop:mr-4">
       <div className="">
         {/* Temp Display and Play/Pause */}
         <div className="max-w-[28rem] tablet:max-w-[20rem] w-full tablet:w-[28rem] mx-auto">
