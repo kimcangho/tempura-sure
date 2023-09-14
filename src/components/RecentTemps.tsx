@@ -2,7 +2,7 @@ import { recentTempsArr } from "@/testData/temps";
 
 const RecentTemps = (): JSX.Element => {
   return (
-    <div className="border border-gray-border rounded-lg shadow-md w-full max-w-[28rem] mx-auto flex flex-col text-center bg-gray-border">
+    <div className="border border-gray-border rounded-lg shadow-md w-full max-w-[28rem] mx-auto flex flex-col text-center bg-gray-border mb-4 desktop:mb-0">
       {/* Table Header */}
       <div className="flex mx-auto w-full border-b-2 border-blue-light py-1">
         <h2 className="w-full text-blue-light font-semibold text-lg">Timestamp</h2>
