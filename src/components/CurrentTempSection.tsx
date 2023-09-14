@@ -11,12 +11,14 @@ interface CurrentTempSectionProps {
   tempInfo: number | undefined;
   isPaused: boolean;
   setIsPaused: Function;
+  currentTimeStamp: Date | null;
 }
 
 const CurrentTempSection = ({
   tempInfo,
   isPaused,
   setIsPaused,
+  currentTimeStamp,
 }: CurrentTempSectionProps): JSX.Element => {
   const [isTempsVisible, setIsTempsVisible] = useState<boolean>(false);
 
@@ -50,8 +52,18 @@ const CurrentTempSection = ({
             <div className="flex space-x-2 h-full items-center">
               <Image src={clockIcon} alt="Clock" className="h-6" />
               <div className="flex flex-col">
-                <h3>MM/DD/YYYY</h3>
-                <h3 className="text-center">hh:mm:ss</h3>
+                <h3 className="text-center">{`${
+                  currentTimeStamp
+                    ? `${currentTimeStamp?.getMonth()}/${currentTimeStamp?.getDay()}/${currentTimeStamp?.getFullYear()}`
+                    : "--/--/----"
+                } `}</h3>
+                <h3 className="text-center">
+                  {`${
+                    currentTimeStamp
+                      ? `${currentTimeStamp?.getHours()}:${currentTimeStamp?.getMinutes()}:${currentTimeStamp?.getSeconds()}`
+                      : "--:--:--"
+                  } `}
+                </h3>
               </div>
             </div>
           </div>

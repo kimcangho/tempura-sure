@@ -7,11 +7,13 @@ import Footer from "@/components/Footer";
 import { useEffect, useState } from "react";
 
 const Home = () => {
-  const [tempInfo, setTempInfo] = useState();
+  const [tempInfo, setTempInfo] = useState<number | undefined>(undefined);
   const [isPaused, setIsPaused] = useState<boolean>(false);
+  const [currentTimeStamp, setCurrentTimeStamp] = useState<Date | null>(null);
 
-  const getTempData = async () => {
+  const getTempData = async (): Promise<void> => {
     try {
+      setCurrentTimeStamp(new Date());
       const query = await fetch(
         "https://api.open-meteo.com/v1/forecast?latitude=43.7957&longitude=-79.2753&hourly=temperature_2m&start_date=2023-09-09&end_date=2023-09-14"
       );
@@ -25,6 +27,7 @@ const Home = () => {
   useEffect(() => {
     if (!isPaused) getTempData();
     const intervalFn = setInterval(async () => {
+      console.log("ping");
       if (!isPaused) await getTempData();
     }, 3000);
     return () => clearInterval(intervalFn);
@@ -38,6 +41,7 @@ const Home = () => {
           tempInfo={tempInfo}
           isPaused={isPaused}
           setIsPaused={setIsPaused}
+          currentTimeStamp={currentTimeStamp}
         />
         <HistoricalTempSection />
       </div>
