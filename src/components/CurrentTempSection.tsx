@@ -7,9 +7,18 @@ import Image from "next/image";
 import mapPinIcon from "/public/icons/mapPin.svg";
 import clockIcon from "/public/icons/clock.svg";
 
-const CurrentTempSection = (): JSX.Element => {
+interface CurrentTempSectionProps {
+  tempInfo: number | undefined;
+  isPaused: boolean;
+  setIsPaused: Function;
+}
+
+const CurrentTempSection = ({
+  tempInfo,
+  isPaused,
+  setIsPaused,
+}: CurrentTempSectionProps): JSX.Element => {
   const [isTempsVisible, setIsTempsVisible] = useState<boolean>(false);
-  const [isPaused, setIsPaused] = useState<boolean>(false);
 
   const handleSaveTemp = (): void => {
     console.log("Saving tempura...");
@@ -22,7 +31,8 @@ const CurrentTempSection = (): JSX.Element => {
 
   const handlePlayPause = (): void => {
     console.log("Play/Pause...");
-    setIsPaused((prev) => !prev);
+    if (isPaused) setIsPaused(false);
+    if (!isPaused) setIsPaused(true);
   };
 
   return (
@@ -32,7 +42,7 @@ const CurrentTempSection = (): JSX.Element => {
         <div className="max-w-[28rem] tablet:max-w-[20rem] w-full tablet:w-[28rem] mx-auto">
           <div className="flex flex-col items-center mx-auto w-full max-w-[28rem] border border-gray-border bg-gray-border rounded-lg shadow-md py-4">
             <h3 className="text-2xl">Current Temperature</h3>
-            <h2 className="text-4xl my-8">°C</h2>
+            <h2 className="text-4xl my-8">{tempInfo}°C</h2>
             <div className="flex items-center space-x-2 mb-2">
               <Image src={mapPinIcon} alt="Map Pin" className="h-6" />
               <h3>New York, US</h3>
