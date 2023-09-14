@@ -21,7 +21,7 @@ import { testTempArr, testTimeArr } from "@/testData/testTempTime";
 
 const HistoricalTempSection = (): JSX.Element => {
   return (
-    <div className="border border-black rounded-lg w-full mx-auto max-w-[28rem] tablet:max-w-[49rem] desktop:max-w-none bg-white">
+    <div className="rounded-lg shadow-md w-full mx-auto max-w-[28rem] tablet:max-w-[49rem] desktop:max-w-none bg-white">
       <Line
         data={{
           labels: testTimeArr,

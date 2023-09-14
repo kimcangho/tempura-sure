@@ -26,12 +26,12 @@ const CurrentTempSection = (): JSX.Element => {
   };
 
   return (
-    <div className="flex flex-col tablet:flex-row desktop:flex-col tablet:justify-center desktop:justify-start w-full desktop:w-[28rem] mx-auto tablet:space-x-4 desktop:space-x-0 desktop:mr-4">
-      <div className="">
+    <div className=" flex flex-col tablet:flex-row desktop:flex-col tablet:justify-center desktop:justify-start w-full desktop:w-[28rem] mx-auto tablet:space-x-4 desktop:space-x-0 desktop:mr-4">
+      <div className="text-black">
         {/* Temp Display and Play/Pause */}
         <div className="max-w-[28rem] tablet:max-w-[20rem] w-full tablet:w-[28rem] mx-auto">
-          <div className="flex flex-col items-center mx-auto w-full max-w-[28rem] border border-gray-border rounded-lg shadow-md py-4">
-            <h3>Current Temperature</h3>
+          <div className="flex flex-col items-center mx-auto w-full max-w-[28rem] border border-gray-border bg-gray-border rounded-lg shadow-md py-4">
+            <h3 className="text-2xl">Current Temperature</h3>
             <h2 className="text-4xl my-8">°C</h2>
             <div className="flex items-center space-x-2 mb-2">
               <Image src={mapPinIcon} alt="Map Pin" className="h-6" />
