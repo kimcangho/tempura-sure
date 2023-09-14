@@ -1,7 +1,11 @@
+import Header from "@/components/Header";
+
 const Home = () => {
-  return (<>
-    <h1>TempuraSure</h1>
-  </>)
-}
+  return (
+    <>
+      <Header />
+    </>
+  );
+};
 
 export default Home;
