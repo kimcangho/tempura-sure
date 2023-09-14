@@ -39,9 +39,13 @@ const CurrentTempSection = (): JSX.Element => {
       </div>
 
       {/* Buttons */}
-      <div className="flex my-4 space-x-2 w-full max-w-[28rem] mx-auto">
+      <div className="flex my-4 space-x-4 w-full max-w-[28rem] mx-auto">
         {/* Save */}
-        <Button name="Save Temp" imagePath="" callbackFn={handleSaveTemp} />
+        <Button
+          name="Save Temp"
+          imagePath=""
+          callbackFn={handleSaveTemp}
+        />
         {/* Show */}
         <Button
           name={`${!isTempsVisible ? "Show" : "Hide"} Temps`}
