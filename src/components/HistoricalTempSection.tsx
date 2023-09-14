@@ -30,7 +30,6 @@ const HistoricalTempSection = (): JSX.Element => {
               label: "test",
               data: testTempArr,
               backgroundColor: "green",
-              fill: true,
             },
           ],
         }}
