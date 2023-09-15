@@ -1,5 +1,12 @@
+import { convertTimeDoubleDigits } from "@/utils/convertTimeDoubleDigits";
+
+interface SavedSnapshotData {
+  timeStamp: Date;
+  temperature: number;
+}
+
 interface RecentTempsProps {
-  savedSnapshotsArr: any[];
+  savedSnapshotsArr: SavedSnapshotData[];
 }
 
 const RecentSnapshotTable = ({ savedSnapshotsArr }: RecentTempsProps) => {
@@ -18,10 +25,23 @@ const RecentSnapshotTable = ({ savedSnapshotsArr }: RecentTempsProps) => {
       {savedSnapshotsArr?.length === 0 ? (
         <h2 className="text-center py-1 text-black">Nothing saved!</h2>
       ) : (
-        savedSnapshotsArr?.map((snapshot, index) => {
+        savedSnapshotsArr?.map((snapshot: any, index) => {
+          const newDate = new Date(Date.parse(snapshot.timeStamp));
+
+          const year = convertTimeDoubleDigits(newDate.getFullYear());
+          const month = convertTimeDoubleDigits(newDate.getMonth() + 1);
+          const day = convertTimeDoubleDigits(newDate.getDate());
+
+          const hours = convertTimeDoubleDigits(newDate.getHours());
+          const minutes = convertTimeDoubleDigits(newDate.getMinutes());
+          const seconds = convertTimeDoubleDigits(newDate.getSeconds());
+
           return (
             <div key={index} className="flex items-center py-1 text-black">
-              <h2 className="w-full">{snapshot.timeStamp.toString()}</h2>
+              <div className="flex flex-col items-center w-full">
+                <h2 className="w-full">{`${month}/${day}/${year}`}</h2>
+                <h2 className="w-full">{`${hours}:${minutes}:${seconds}`}</h2>
+              </div>
               <h2 className="w-full"> {snapshot.temperature}</h2>
             </div>
           );

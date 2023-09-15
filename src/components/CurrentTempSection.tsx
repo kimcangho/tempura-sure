@@ -8,8 +8,8 @@ import mapPinIcon from "/public/icons/mapPin.svg";
 import clockIcon from "/public/icons/clock.svg";
 import { convertTimeDoubleDigits } from "@/utils/convertTimeDoubleDigits";
 
-interface SavedTempData {
-  timeStamp: Date;
+interface SavedSnapshotData {
+  timeStamp: Date | string;
   temperature: number;
 }
 
@@ -28,7 +28,7 @@ const CurrentTempSection = ({
 }: CurrentTempSectionProps): JSX.Element => {
   const [isTempsVisible, setIsTempsVisible] = useState<boolean>(false);
   const [savedSnapshotsArr, setSavedSnapshotsArr] = useState<
-    SavedTempData | []
+    SavedSnapshotData | []
   >([]);
 
   useEffect(() => {
@@ -38,7 +38,7 @@ const CurrentTempSection = ({
   }, []);
 
   const handleSaveTemp = (): void => {
-    //@ts-ignore
+    // @ts-ignore
     setSavedSnapshotsArr((prevSavedTempsArr: any) => {
       if (prevSavedTempsArr.length >= 5) {
         prevSavedTempsArr = prevSavedTempsArr.slice(0, 4);

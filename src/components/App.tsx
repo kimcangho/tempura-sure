@@ -8,8 +8,8 @@ import { useEffect, useState } from "react";
 import { convertTimeDoubleDigits } from "@/utils/convertTimeDoubleDigits";
 
 const App = () => {
-    const [isPaused, setIsPaused] = useState<boolean>(false);
-    const [currentTemp, setCurrentTemp] = useState<number | undefined>(undefined);
+  const [isPaused, setIsPaused] = useState<boolean>(false);
+  const [currentTemp, setCurrentTemp] = useState<number | undefined>(undefined);
   const [currentTimeStamp, setCurrentTimeStamp] = useState<Date | null>(null);
 
   const getTempData = async (): Promise<void> => {
