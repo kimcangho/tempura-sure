@@ -1,8 +1,68 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# TempuraSure
 
-## Getting Started
+> TempuraSure is a web application dashboard that retrieves, saves and tabulates hourly temperature data for Toronto, CA.
 
-First, run the development server:
+## Table of Contents
+
+- [General Info](#general-information)
+- [Technologies Used](#technologies-used)
+- [Features](#features)
+- [Screenshots](#screenshots)
+- [Setup](#setup)
+- [Design Decisions and Tradeoffs](#design-decisions-and-tradeoffs)
+- [Room For Improvement](#room-for-improvement)
+- [Acknowledgements](#acknowledgements)
+- [Contact](#contact)
+
+## General Information
+
+- This web application was developed as an exercise for Virgl.io.
+- This application makes calls at a given interval to [`https://open-meteo.com/`](https://open-meteo.com/).
+
+## Technologies Used
+
+- Next.js - version 13.4.19
+- React.js - version 18.2.0
+- TailwindCSS - version 3.3.3
+- Typescript - version 5.2.2
+
+## Notable Libraries Used
+
+- chart.js - version 4.4.0
+
+## Features
+
+- Displaying current temperature
+- Pause and resume temperature data fetching with the "Play / Pause" button.
+- Save a temperature/time snapshot using the "Save Snaps" button.
+- Show/Hide a table containing up to 5 snapshots using the "Show/Hide Snaps" button.
+- Tracking 5-day historical temperature data within a line chart.
+
+## Screenshots
+
+Mobile View
+![Mobile View](https://res.cloudinary.com/di7kiyj3y/image/upload/v1692409325/gattago-empty-overview_miszyl.png)
+
+Mobile View with Snapshot Table
+![Mobile View with Snapshot Table](https://res.cloudinary.com/di7kiyj3y/image/upload/v1692409325/gattago-empty-overview_miszyl.png)
+
+Tablet View
+![Tablet View](https://res.cloudinary.com/di7kiyj3y/image/upload/v1692409325/gattago-empty-overview_miszyl.png)
+
+Tablet View with Snapshot Table
+![Tablet View With Snapshot Table](https://res.cloudinary.com/di7kiyj3y/image/upload/v1692409325/gattago-empty-overview_miszyl.png)
+
+Desktop View
+![Desktop View](https://res.cloudinary.com/di7kiyj3y/image/upload/v1692409325/gattago-empty-overview_miszyl.png)
+
+Mobile View with Snapshot Table
+![Desktop View with Snapshot Table](https://res.cloudinary.com/di7kiyj3y/image/upload/v1692409325/gattago-empty-overview_miszyl.png)
+
+## Setup
+
+Download the repository.
+
+Run the development server:
 
 ```bash
 npm run dev
@@ -14,21 +74,33 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Design Decisions and Tradeoffs
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- First exposure to Next.js metaframework. Proceeded to develop using short timeline to simulate employer take-home assignment.
+- TailwindsCSS used as CSS framework due to previous exposure, preference and quick development time.
+- Added icons and colour-coded buttons for ease of use. Added dual function for play/pause and show/hide buttons to streamline user interactions with dashboard. 
+- Opted for browser localStorage property to persist data (temperature snapshots only) due to short (1.5 day) submission turnaround time.
+- Limited number of stored snapshots in localStorage to maximum of 5. This was done to prevent overloading localStorage key. 
+- Should more data be required to persist, relational database (MySQL / SQLite / PostgreSQL) can be integrated using Prisma ORM.
 
-## Learn More
+## Room For Improvement
 
-To learn more about Next.js, take a look at the following resources:
+- General refactoring and type-checking.
+- Overall knowledge and practice with Next.js and integrating Prisma database.
+- Chart.js / react-chartjs-2 implementation and styling.
+- An extra helping of deep fried seafood to maintain developer satiation.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Known issues:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- Touch events interfering with scrolling in lineup page.
+- Deployment issues where cookies are unable to be received by front-end from back-end.
 
-## Deploy on Vercel
+## Acknowledgements
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+[Virgl.io](https://www.virgl.io/) for the opportunity to tackle this exercise.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Contact
+
+Created by [Kent K.C. Ho](https://www.linkedin.com/in/kentkcho/) - feel free to contact me!
+
+> Written with [StackEdit](https://stackedit.io/).

@@ -6,7 +6,7 @@ import Header from "@/components/Header";
 import CurrentTempTime from "@/components/CurrentTempTime";
 import HistoricalTempChart from "@/components/HistoricalTempChart";
 import Footer from "@/components/Footer";
-import { LATITUDE, LONGITUDE, FIVE_DAYS_TO_MS } from "@/data/constants";
+import { LATITUDE, LONGITUDE, FIVE_DAYS_IN_MS, FETCH_INTERVAL_IN_MS } from "@/data/constants";
 
 const App = () => {
   const [isPaused, setIsPaused] = useState<boolean>(false);
@@ -24,7 +24,7 @@ const App = () => {
       const currentMonth = convertTimeDoubleDigits(timeStamp.getMonth() + 1);
       const currentDate = timeStamp.getDate();
       const convertedDate = Date.parse(timeStamp.toString());
-      const startDateAsNumber: number = convertedDate - FIVE_DAYS_TO_MS;
+      const startDateAsNumber: number = convertedDate - FIVE_DAYS_IN_MS;
       const startDate = new Date(startDateAsNumber).getDate();
 
       const query = await fetch(
@@ -42,7 +42,7 @@ const App = () => {
     if (!isPaused) getTempData();
     const intervalFn = setInterval(async () => {
       if (!isPaused) await getTempData();
-    }, 3000);
+    }, FETCH_INTERVAL_IN_MS);
     return () => clearInterval(intervalFn);
   }, [isPaused]);
 
