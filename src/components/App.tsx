@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { convertTimeDoubleDigits } from "@/utils/convertTimeDoubleDigits";
 import Header from "@/components/Header";
-import CurrentTempSection from "@/components/CurrentTempSection";
+import CurrentTempTime from "@/components/CurrentTempTime";
 import HistoricalTempChart from "@/components/HistoricalTempChart";
 import Footer from "@/components/Footer";
 import { LATITUDE, LONGITUDE, FIVE_DAYS_TO_MS } from "@/data/constants";
@@ -50,7 +50,7 @@ const App = () => {
     <div className="flex flex-col h-screen justify-between">
       <Header />
       <div className="flex flex-col desktop:flex-row w-full ƒpx-2 desktop:max-w-[80rem] mx-auto">
-        <CurrentTempSection
+        <CurrentTempTime
           isPaused={isPaused}
           setIsPaused={setIsPaused}
           currentTemp={currentTemp}
