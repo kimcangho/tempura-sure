@@ -41,21 +41,27 @@
 ## Screenshots
 
 Mobile View
+
 ![Mobile View](https://res.cloudinary.com/di7kiyj3y/image/upload/v1694799791/tempura-sure-mobile_s2ikdc.png)
 
 Mobile View with Snapshot Table
+
 ![Mobile View with Snapshot Table](https://res.cloudinary.com/di7kiyj3y/image/upload/v1694799791/tempura-sure-mobile-snaps_wy4wkl.png)
 
 Tablet View
+
 ![Tablet View](https://res.cloudinary.com/di7kiyj3y/image/upload/v1694799791/tempura-sure-tablet_z0vkyc.png)
 
 Tablet View with Snapshot Table
+
 ![Tablet View With Snapshot Table](https://res.cloudinary.com/di7kiyj3y/image/upload/v1694799790/tempura-sure-tablet-snaps_q0fx2r.png)
 
 Desktop View
+
 ![Desktop View](https://res.cloudinary.com/di7kiyj3y/image/upload/v1694799790/tempura-sure-desktop_poo1cr.png)
 
 Desktop View with Snapshot Table
+
 ![Desktop View with Snapshot Table](https://res.cloudinary.com/di7kiyj3y/image/upload/v1694799791/tempura-sure-desktop-snaps_xhei5v.png)
 
 ## Setup
