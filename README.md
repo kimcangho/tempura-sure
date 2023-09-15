@@ -66,7 +66,7 @@ Desktop View with Snapshot Table
 
 ## Usage
 
-See link ![here](https://www.loom.com/share/7bce74feb0b4471b83c727a843ab618a?sid=d2056a52-8be2-47af-bd43-c79d9e442658) for a quick video demo!
+See link here for a quick video demo! ![https://www.loom.com/share/7bce74feb0b4471b83c727a843ab618a?sid=815525cb-9300-4a46-99ca-db45d6f8dbb5](https://www.loom.com/share/7bce74feb0b4471b83c727a843ab618a?sid=d2056a52-8be2-47af-bd43-c79d9e442658) 
 
 ## Setup
 
