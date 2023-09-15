@@ -6,7 +6,12 @@ import Header from "@/components/Header";
 import CurrentTempTime from "@/components/CurrentTempTime";
 import HistoricalTempChart from "@/components/HistoricalTempChart";
 import Footer from "@/components/Footer";
-import { LATITUDE, LONGITUDE, FIVE_DAYS_IN_MS, FETCH_INTERVAL_IN_MS } from "@/data/constants";
+import {
+  LATITUDE,
+  LONGITUDE,
+  FIVE_DAYS_IN_MS,
+  FETCH_INTERVAL_IN_MS,
+} from "@/data/constants";
 
 const App = () => {
   const [isPaused, setIsPaused] = useState<boolean>(false);
@@ -28,11 +33,12 @@ const App = () => {
       const startDate = new Date(startDateAsNumber).getDate();
 
       const query = await fetch(
-        `https://api.open-meteo.com/v1/forecast?latitude=${LATITUDE}&longitude=${LONGITUDE}&hourly=temperature_2m&start_date=${currentYear}-${currentMonth}-${startDate}&end_date=${currentYear}-${currentMonth}-${currentDate}`
+        `https://api.open-meteo.com/v1/forecast?latitude=${LATITUDE}&longitude=${LONGITUDE}&current_weather=true&hourly=temperature_2m&start_date=${currentYear}-${currentMonth}-${startDate}&end_date=${currentYear}-${currentMonth}-${currentDate}&timezone=America%2FNew_York`
       );
-      const { hourly } = await query.json();
-      setHourlyDataArr(hourly);
-      setCurrentTemp(hourly.temperature_2m[hourly.temperature_2m.length - 1]);
+      const data = await query.json();
+
+      setHourlyDataArr(data.hourly);
+      setCurrentTemp(data.current_weather.temperature);
     } catch (err: unknown) {
       console.log(err);
     }
