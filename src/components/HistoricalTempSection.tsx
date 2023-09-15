@@ -29,11 +29,11 @@ const HistoricalTempSection = ({
     <div className="rounded-lg shadow-md w-full mx-auto max-w-[28rem] tablet:max-w-[49rem] desktop:max-w-none bg-white">
       <Line
         data={{
-          labels: hourlyDataArr.time,
+          labels: hourlyDataArr?.time,
           datasets: [
             {
               label: "test",
-              data: hourlyDataArr.temperature_2m,
+              data: hourlyDataArr?.temperature_2m,
               backgroundColor: "green",
             },
           ],
