@@ -20,13 +20,19 @@ ChartJS.register(
 
 interface HistoricalTempChartProps {
   hourlyDataArr: any;
+  isTempsVisible: boolean;
 }
 
 const HistoricalTempChart = ({
   hourlyDataArr,
+  isTempsVisible,
 }: HistoricalTempChartProps): JSX.Element => {
   return (
-    <div className="rounded-lg shadow-md w-full mx-auto max-w-[28rem] tablet:max-w-[49rem] desktop:max-w-none bg-white">
+    <div
+      className={`rounded-lg shadow-md w-full mx-auto max-w-[28rem] tablet:max-w-[49rem] desktop:max-w-none bg-white ${
+        !isTempsVisible ? "h-[22.5rem]" : "h-full"
+      } `}
+    >
       <Line
         data={{
           labels: hourlyDataArr?.time,
@@ -40,10 +46,7 @@ const HistoricalTempChart = ({
         }}
         options={{
           plugins: {
-            subtitle: {
-              display: true,
-              text: "Custom Chart Subtitle",
-            },
+            title: { display: true },
           },
           scales: {
             x: {
@@ -60,7 +63,7 @@ const HistoricalTempChart = ({
             },
           },
           maintainAspectRatio: false,
-          aspectRatio: 2,
+          aspectRatio: 5,
           responsive: true,
         }}
         className="hfull"

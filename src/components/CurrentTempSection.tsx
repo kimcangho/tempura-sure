@@ -19,6 +19,8 @@ interface CurrentTempSectionProps {
   isPaused: boolean;
   setIsPaused: Function;
   currentTimeStamp: Date | null;
+  isTempsVisible: boolean;
+  setIsTempsVisible: Function;
 }
 
 const CurrentTempSection = ({
@@ -26,8 +28,9 @@ const CurrentTempSection = ({
   isPaused,
   setIsPaused,
   currentTimeStamp,
+  isTempsVisible,
+  setIsTempsVisible,
 }: CurrentTempSectionProps): JSX.Element => {
-  const [isTempsVisible, setIsTempsVisible] = useState<boolean>(false);
   const [savedSnapshotsArr, setSavedSnapshotsArr] = useState<
     SavedSnapshotData | []
   >([]);
@@ -59,7 +62,7 @@ const CurrentTempSection = ({
   };
 
   const handleShowSnapshots = (): void => {
-    setIsTempsVisible((prevState) => !prevState);
+    setIsTempsVisible((prevState: boolean) => !prevState);
   };
 
   const handlePlayPause = (): void => {
@@ -112,7 +115,7 @@ const CurrentTempSection = ({
           <div className="flex mt-4 w-full max-w-[28rem] mx-auto">
             <Button
               name={!isPaused ? "Pause" : "Play"}
-              imagePath={!isPaused ? "../icons/pause.svg" : "../icons/play.svg"} 
+              imagePath={!isPaused ? "../icons/pause.svg" : "../icons/play.svg"}
               callbackFn={handlePlayPause}
             />
           </div>

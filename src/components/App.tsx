@@ -12,6 +12,7 @@ const App = () => {
   const [isPaused, setIsPaused] = useState<boolean>(false);
   const [currentTemp, setCurrentTemp] = useState<number | undefined>(undefined);
   const [currentTimeStamp, setCurrentTimeStamp] = useState<Date | null>(null);
+  const [isTempsVisible, setIsTempsVisible] = useState<boolean>(false);
   const [hourlyDataArr, setHourlyDataArr] = useState([]);
 
   const getTempData = async (): Promise<void> => {
@@ -50,12 +51,17 @@ const App = () => {
       <Header />
       <div className="flex flex-col desktop:flex-row w-full ƒpx-2 desktop:max-w-[80rem] mx-auto">
         <CurrentTempSection
-          currentTemp={currentTemp}
           isPaused={isPaused}
           setIsPaused={setIsPaused}
+          currentTemp={currentTemp}
           currentTimeStamp={currentTimeStamp}
+          isTempsVisible={isTempsVisible}
+          setIsTempsVisible={setIsTempsVisible}
         />
-        <HistoricalTempChart hourlyDataArr={hourlyDataArr} />
+        <HistoricalTempChart
+          hourlyDataArr={hourlyDataArr}
+          isTempsVisible={isTempsVisible}
+        />
       </div>
       <Footer />
     </div>
