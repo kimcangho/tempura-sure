@@ -59,6 +59,7 @@ const HistoricalTempSection = ({
               },
             },
           },
+          // maintainAspectRatio: true,
           responsive: true,
         }}
         className="hfull"
