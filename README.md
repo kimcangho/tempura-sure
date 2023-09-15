@@ -8,7 +8,7 @@
 - [Technologies Used](#technologies-used)
 - [Features](#features)
 - [Screenshots](#screenshots)
-- [Setup](#setup)
+- [Usage](#usage)
 - [Design Decisions and Tradeoffs](#design-decisions-and-tradeoffs)
 - [Room For Improvement](#room-for-improvement)
 - [Acknowledgements](#acknowledgements)
@@ -64,6 +64,10 @@ Desktop View with Snapshot Table
 
 ![Desktop View with Snapshot Table](https://res.cloudinary.com/di7kiyj3y/image/upload/v1694799791/tempura-sure-desktop-snaps_xhei5v.png)
 
+## Usage
+
+See link ![here](https://www.loom.com/share/7bce74feb0b4471b83c727a843ab618a?sid=fceb48e3-5c52-4030-8f67-60a5e64328df) for a quick video demo!
+
 ## Setup
 
 Download the repository.
@@ -84,9 +88,9 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 - First exposure to Next.js metaframework. Proceeded to develop using short timeline to simulate employer take-home assignment.
 - TailwindsCSS used as CSS framework due to previous exposure, preference and quick development time.
-- Added icons and colour-coded buttons for ease of use. Added dual function for play/pause and show/hide buttons to streamline user interactions with dashboard. 
+- Added icons and colour-coded buttons for ease of use. Added dual function for play/pause and show/hide buttons to streamline user interactions with dashboard.
 - Opted for browser localStorage property to persist data (temperature snapshots only) due to short (1.5 day) submission turnaround time.
-- Limited number of stored snapshots in localStorage to maximum of 5. This was done to prevent overloading localStorage key. 
+- Limited number of stored snapshots in localStorage to maximum of 5. This was done to prevent overloading localStorage key.
 - Should more data be required to persist, relational database (MySQL / SQLite / PostgreSQL) can be integrated using Prisma ORM.
 
 ## Room For Improvement
