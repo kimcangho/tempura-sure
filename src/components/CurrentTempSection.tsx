@@ -7,6 +7,7 @@ import Image from "next/image";
 import mapPinIcon from "/public/icons/mapPin.svg";
 import clockIcon from "/public/icons/clock.svg";
 import { convertTimeDoubleDigits } from "@/utils/convertTimeDoubleDigits";
+import { LOCATION } from "@/data/constants";
 
 interface SavedSnapshotData {
   timeStamp: Date | string;
@@ -37,7 +38,7 @@ const CurrentTempSection = ({
     else setSavedSnapshotsArr(savedSnapshots);
   }, []);
 
-  const handleSaveTemp = (): void => {
+  const handleSaveSnapshot = () => {
     // @ts-ignore
     setSavedSnapshotsArr((prevSavedTempsArr: any) => {
       if (prevSavedTempsArr.length >= 5) {
@@ -57,7 +58,7 @@ const CurrentTempSection = ({
     });
   };
 
-  const handleShowTemps = (): void => {
+  const handleShowSnapshots = (): void => {
     setIsTempsVisible((prevState) => !prevState);
   };
 
@@ -75,7 +76,7 @@ const CurrentTempSection = ({
             <h2 className="text-4xl my-8">{currentTemp}°C</h2>
             <div className="flex items-center space-x-2 mb-2">
               <Image src={mapPinIcon} alt="Map Pin" className="h-6" />
-              <h3>New York, US</h3>
+              <h3>{LOCATION}</h3>
             </div>
             <div className="flex space-x-2 h-full items-center">
               <Image src={clockIcon} alt="Clock" className="h-6" />
@@ -111,24 +112,28 @@ const CurrentTempSection = ({
           <div className="flex mt-4 w-full max-w-[28rem] mx-auto">
             <Button
               name={!isPaused ? "Pause" : "Play"}
-              imagePath=""
+              imagePath={!isPaused ? "../icons/pause.svg" : "../icons/play.svg"} 
               callbackFn={handlePlayPause}
             />
           </div>
         </div>
 
-        {/* Buttons */}
+        {/* Save and Show Buttons */}
         <div className="flex my-4 space-x-4 w-full max-w-[28rem] tablet:max-w-[20rem] mx-auto">
-          {/* Save */}
-          <Button name="Save Snap" imagePath="" callbackFn={handleSaveTemp} />
-          {/* Show */}
+          <Button
+            name="Save Snap"
+            imagePath="../icons/saveData.svg"
+            callbackFn={handleSaveSnapshot}
+          />
           <Button
             name={`${!isTempsVisible ? "Show" : "Hide"} Snaps`}
-            imagePath=""
-            callbackFn={handleShowTemps}
+            imagePath="../icons/showData.svg"
+            callbackFn={handleShowSnapshots}
           />
         </div>
       </div>
+
+      {/* Snapshot Table */}
       {isTempsVisible && (
         //@ts-ignore
         <RecentSnapshotTable savedSnapshotsArr={savedSnapshotsArr} />

@@ -32,13 +32,19 @@ const HistoricalTempSection = ({
           labels: hourlyDataArr?.time,
           datasets: [
             {
-              label: "test",
+              label: "Temperature",
               data: hourlyDataArr?.temperature_2m,
               backgroundColor: "green",
             },
           ],
         }}
         options={{
+          plugins: {
+            subtitle: {
+              display: true,
+              text: "Custom Chart Subtitle",
+            },
+          },
           scales: {
             x: {
               title: {
@@ -54,7 +60,6 @@ const HistoricalTempSection = ({
             },
           },
           responsive: true,
-          maintainAspectRatio: true,
         }}
         className="hfull"
       />

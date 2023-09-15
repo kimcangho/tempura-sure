@@ -16,7 +16,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-blue-dark text-white-dark`}>{children}</body>
+      <link rel="icon" href="/tempura-favicon.png" sizes="any" />
+      <body className={`${inter.className} bg-blue-dark text-white-dark`}>
+        {children}
+      </body>
     </html>
   );
 }
