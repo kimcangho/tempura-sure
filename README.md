@@ -66,7 +66,7 @@ Desktop View with Snapshot Table
 
 ## Usage
 
-Copy and paste the following link to your browser URL bar for a quick video demo! https://www.loom.com/share/7bce74feb0b4471b83c727a843ab618a?sid=d2056a52-8be2-47af-bd43-c79d9e442658
+Check out this vidoe for a quick demo! https://www.loom.com/share/7bce74feb0b4471b83c727a843ab618a?sid=d2056a52-8be2-47af-bd43-c79d9e442658
 
 ## Setup
 
