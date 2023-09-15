@@ -49,7 +49,7 @@ const App = () => {
   return (
     <div className="flex flex-col h-screen justify-between">
       <Header />
-      <div className="flex flex-col desktop:flex-row w-full ƒpx-2 desktop:max-w-[80rem] mx-auto">
+      <div className="flex flex-col desktop:flex-row w-full px-2 desktop:max-w-[80rem] mx-auto">
         <CurrentTempTime
           isPaused={isPaused}
           setIsPaused={setIsPaused}
