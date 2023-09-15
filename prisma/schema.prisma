@@ -10,10 +10,10 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model RecentTemps {
+model Snapshots {
   id        String   @id @unique @default(uuid())
   tempInC   Float
   timeStamp DateTime @default(now())
 
-  @@map(name: "recentTemps")
+  @@map(name: "snapshots")
 }

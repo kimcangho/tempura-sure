@@ -1,12 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from "./Button";
-import RecentTemps from "./RecentTemps";
+import RecentSnapshotTable from "./RecentSnapshotTable";
 import Image from "next/image";
 import mapPinIcon from "/public/icons/mapPin.svg";
 import clockIcon from "/public/icons/clock.svg";
 import { convertTimeDoubleDigits } from "@/utils/convertTimeDoubleDigits";
+
+interface SavedTempData {
+  timeStamp: Date;
+  temperature: number;
+}
 
 interface CurrentTempSectionProps {
   tempInfo: number | undefined;
@@ -22,20 +27,40 @@ const CurrentTempSection = ({
   currentTimeStamp,
 }: CurrentTempSectionProps): JSX.Element => {
   const [isTempsVisible, setIsTempsVisible] = useState<boolean>(false);
+  const [savedTempsArr, setSavedTempsArr] = useState<SavedTempData | []>([]);
+
+  useEffect(() => {
+    const savedSnapshots: any = JSON.parse(localStorage.getItem("snapshots")!);
+    if (!savedSnapshots) setSavedTempsArr([]);
+    else setSavedTempsArr(savedSnapshots);
+  }, []);
 
   const handleSaveTemp = (): void => {
-    console.log("Saving tempura...");
+    //@ts-ignore
+    setSavedTempsArr((prevSavedTempsArr: any) => {
+      if (prevSavedTempsArr.length >= 5) {
+        prevSavedTempsArr = prevSavedTempsArr.slice(0, 4);
+      }
+
+      const newSavedTempsArr = [
+        {
+          timeStamp: currentTimeStamp,
+          temperature: tempInfo,
+        },
+        ...prevSavedTempsArr,
+      ];
+
+      localStorage.setItem("snapshots", JSON.stringify(newSavedTempsArr));
+      return newSavedTempsArr;
+    });
   };
 
   const handleShowTemps = (): void => {
-    console.log("Showing last 5 tempuras...");
     setIsTempsVisible((prevState) => !prevState);
   };
 
   const handlePlayPause = (): void => {
-    console.log("Play/Pause...");
-    if (isPaused) setIsPaused(false);
-    if (!isPaused) setIsPaused(true);
+    setIsPaused((prev: boolean) => !prev);
   };
 
   return (
@@ -93,16 +118,19 @@ const CurrentTempSection = ({
         {/* Buttons */}
         <div className="flex my-4 space-x-4 w-full max-w-[28rem] tablet:max-w-[20rem] mx-auto">
           {/* Save */}
-          <Button name="Save Temp" imagePath="" callbackFn={handleSaveTemp} />
+          <Button name="Save Snap" imagePath="" callbackFn={handleSaveTemp} />
           {/* Show */}
           <Button
-            name={`${!isTempsVisible ? "Show" : "Hide"} Temps`}
+            name={`${!isTempsVisible ? "Show" : "Hide"} Snaps`}
             imagePath=""
             callbackFn={handleShowTemps}
           />
         </div>
       </div>
-      {isTempsVisible && <RecentTemps />}
+      {isTempsVisible && (
+        //@ts-ignore
+        <RecentSnapshotTable savedTempsArr={savedTempsArr} />
+      )}
     </div>
   );
 };
