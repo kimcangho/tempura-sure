@@ -14,30 +14,32 @@ interface SavedTempData {
 }
 
 interface CurrentTempSectionProps {
-  tempInfo: number | undefined;
+  currentTemp: number | undefined;
   isPaused: boolean;
   setIsPaused: Function;
   currentTimeStamp: Date | null;
 }
 
 const CurrentTempSection = ({
-  tempInfo,
+  currentTemp,
   isPaused,
   setIsPaused,
   currentTimeStamp,
 }: CurrentTempSectionProps): JSX.Element => {
   const [isTempsVisible, setIsTempsVisible] = useState<boolean>(false);
-  const [savedTempsArr, setSavedTempsArr] = useState<SavedTempData | []>([]);
+  const [savedSnapshotsArr, setSavedSnapshotsArr] = useState<
+    SavedTempData | []
+  >([]);
 
   useEffect(() => {
     const savedSnapshots: any = JSON.parse(localStorage.getItem("snapshots")!);
-    if (!savedSnapshots) setSavedTempsArr([]);
-    else setSavedTempsArr(savedSnapshots);
+    if (!savedSnapshots) setSavedSnapshotsArr([]);
+    else setSavedSnapshotsArr(savedSnapshots);
   }, []);
 
   const handleSaveTemp = (): void => {
     //@ts-ignore
-    setSavedTempsArr((prevSavedTempsArr: any) => {
+    setSavedSnapshotsArr((prevSavedTempsArr: any) => {
       if (prevSavedTempsArr.length >= 5) {
         prevSavedTempsArr = prevSavedTempsArr.slice(0, 4);
       }
@@ -45,7 +47,7 @@ const CurrentTempSection = ({
       const newSavedTempsArr = [
         {
           timeStamp: currentTimeStamp,
-          temperature: tempInfo,
+          temperature: currentTemp,
         },
         ...prevSavedTempsArr,
       ];
@@ -70,7 +72,7 @@ const CurrentTempSection = ({
         <div className="max-w-[28rem] tablet:max-w-[20rem] w-full tablet:w-[28rem] mx-auto">
           <div className="flex flex-col items-center mx-auto w-full max-w-[28rem] border border-gray-border bg-gray-border rounded-lg shadow-md py-4">
             <h3 className="text-2xl">Current Temperature</h3>
-            <h2 className="text-4xl my-8">{tempInfo}°C</h2>
+            <h2 className="text-4xl my-8">{currentTemp}°C</h2>
             <div className="flex items-center space-x-2 mb-2">
               <Image src={mapPinIcon} alt="Map Pin" className="h-6" />
               <h3>New York, US</h3>
@@ -129,7 +131,7 @@ const CurrentTempSection = ({
       </div>
       {isTempsVisible && (
         //@ts-ignore
-        <RecentSnapshotTable savedTempsArr={savedTempsArr} />
+        <RecentSnapshotTable savedSnapshotsArr={savedSnapshotsArr} />
       )}
     </div>
   );

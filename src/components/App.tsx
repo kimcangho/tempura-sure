@@ -8,8 +8,8 @@ import { useEffect, useState } from "react";
 import { convertTimeDoubleDigits } from "@/utils/convertTimeDoubleDigits";
 
 const App = () => {
-  const [tempInfo, setTempInfo] = useState<number | undefined>(undefined);
-  const [isPaused, setIsPaused] = useState<boolean>(false);
+    const [isPaused, setIsPaused] = useState<boolean>(false);
+    const [currentTemp, setCurrentTemp] = useState<number | undefined>(undefined);
   const [currentTimeStamp, setCurrentTimeStamp] = useState<Date | null>(null);
 
   const getTempData = async (): Promise<void> => {
@@ -23,7 +23,7 @@ const App = () => {
         `https://api.open-meteo.com/v1/forecast?latitude=43.7957&longitude=-79.2753&hourly=temperature_2m&start_date=${currentYear}-${currentMonth}-09&end_date=${currentYear}-${currentMonth}-14`
       );
       const { hourly } = await query.json();
-      setTempInfo(hourly.temperature_2m[hourly.temperature_2m.length - 1]);
+      setCurrentTemp(hourly.temperature_2m[hourly.temperature_2m.length - 1]);
     } catch (err: unknown) {
       console.log(err);
     }
@@ -41,7 +41,7 @@ const App = () => {
       <Header />
       <div className="flex flex-col desktop:flex-row px-2 desktop:max-w-[80rem] mx-auto">
         <CurrentTempSection
-          tempInfo={tempInfo}
+          currentTemp={currentTemp}
           isPaused={isPaused}
           setIsPaused={setIsPaused}
           currentTimeStamp={currentTimeStamp}
