@@ -17,18 +17,23 @@ ChartJS.register(
   PointElement,
   Tooltip
 );
-import { testTempArr, testTimeArr } from "@/testData/testTempTime";
 
-const HistoricalTempSection = (): JSX.Element => {
+interface HistoricalTempSectionProps {
+  hourlyDataArr: any;
+}
+
+const HistoricalTempSection = ({
+  hourlyDataArr,
+}: HistoricalTempSectionProps): JSX.Element => {
   return (
     <div className="rounded-lg shadow-md w-full mx-auto max-w-[28rem] tablet:max-w-[49rem] desktop:max-w-none bg-white">
       <Line
         data={{
-          labels: testTimeArr,
+          labels: hourlyDataArr.time,
           datasets: [
             {
               label: "test",
-              data: testTempArr,
+              data: hourlyDataArr.temperature_2m,
               backgroundColor: "green",
             },
           ],

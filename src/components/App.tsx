@@ -11,6 +11,7 @@ const App = () => {
   const [isPaused, setIsPaused] = useState<boolean>(false);
   const [currentTemp, setCurrentTemp] = useState<number | undefined>(undefined);
   const [currentTimeStamp, setCurrentTimeStamp] = useState<Date | null>(null);
+  const [hourlyDataArr, setHourlyDataArr] = useState([]);
 
   const getTempData = async (): Promise<void> => {
     try {
@@ -23,6 +24,8 @@ const App = () => {
         `https://api.open-meteo.com/v1/forecast?latitude=43.7957&longitude=-79.2753&hourly=temperature_2m&start_date=${currentYear}-${currentMonth}-09&end_date=${currentYear}-${currentMonth}-14`
       );
       const { hourly } = await query.json();
+      console.log(hourly);
+      setHourlyDataArr(hourly);
       setCurrentTemp(hourly.temperature_2m[hourly.temperature_2m.length - 1]);
     } catch (err: unknown) {
       console.log(err);
@@ -46,7 +49,7 @@ const App = () => {
           setIsPaused={setIsPaused}
           currentTimeStamp={currentTimeStamp}
         />
-        <HistoricalTempSection />
+        <HistoricalTempSection hourlyDataArr={hourlyDataArr} />
       </div>
       <Footer />
     </div>
