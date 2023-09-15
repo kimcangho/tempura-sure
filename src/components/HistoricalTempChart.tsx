@@ -29,8 +29,8 @@ const HistoricalTempChart = ({
 }: HistoricalTempChartProps): JSX.Element => {
   return (
     <div
-      className={`rounded-lg shadow-md w-full mx-auto max-w-[28rem] tablet:max-w-[49rem] desktop:max-w-none bg-white ${
-        !isTempsVisible ? "h-[22.5rem]" : "h-full"
+      className={`rounded-lg shadow-md w-full mx-auto max-w-[28rem] tablet:max-w-[49rem] max-h-[22.5rem] desktop:max-w-none bg-white ${
+        !isTempsVisible ? "h-[22.5rem]" : "desktop:max-h-none h-full"
       } `}
     >
       <Line
