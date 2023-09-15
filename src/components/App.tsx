@@ -36,7 +36,6 @@ const App = () => {
         `https://api.open-meteo.com/v1/forecast?latitude=${LATITUDE}&longitude=${LONGITUDE}&current_weather=true&hourly=temperature_2m&start_date=${currentYear}-${currentMonth}-${startDate}&end_date=${currentYear}-${currentMonth}-${currentDate}&timezone=America%2FNew_York`
       );
       const data = await query.json();
-
       setHourlyDataArr(data.hourly);
       setCurrentTemp(data.current_weather.temperature);
     } catch (err: unknown) {
