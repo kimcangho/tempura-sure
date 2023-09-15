@@ -18,13 +18,13 @@ ChartJS.register(
   Tooltip
 );
 
-interface HistoricalTempSectionProps {
+interface HistoricalTempChartProps {
   hourlyDataArr: any;
 }
 
-const HistoricalTempSection = ({
+const HistoricalTempChart = ({
   hourlyDataArr,
-}: HistoricalTempSectionProps): JSX.Element => {
+}: HistoricalTempChartProps): JSX.Element => {
   return (
     <div className="rounded-lg shadow-md w-full mx-auto max-w-[28rem] tablet:max-w-[49rem] desktop:max-w-none bg-white">
       <Line
@@ -59,7 +59,8 @@ const HistoricalTempSection = ({
               },
             },
           },
-          // maintainAspectRatio: true,
+          maintainAspectRatio: false,
+          aspectRatio: 2,
           responsive: true,
         }}
         className="hfull"
@@ -68,4 +69,4 @@ const HistoricalTempSection = ({
   );
 };
 
-export default HistoricalTempSection;
+export default HistoricalTempChart;

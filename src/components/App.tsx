@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { convertTimeDoubleDigits } from "@/utils/convertTimeDoubleDigits";
 import Header from "@/components/Header";
 import CurrentTempSection from "@/components/CurrentTempSection";
-import HistoricalTempSection from "@/components/HistoricalTempSection";
+import HistoricalTempChart from "@/components/HistoricalTempChart";
 import Footer from "@/components/Footer";
 import { LATITUDE, LONGITUDE, FIVE_DAYS_TO_MS } from "@/data/constants";
 
@@ -55,7 +55,7 @@ const App = () => {
           setIsPaused={setIsPaused}
           currentTimeStamp={currentTimeStamp}
         />
-        <HistoricalTempSection hourlyDataArr={hourlyDataArr} />
+        <HistoricalTempChart hourlyDataArr={hourlyDataArr} />
       </div>
       <Footer />
     </div>
