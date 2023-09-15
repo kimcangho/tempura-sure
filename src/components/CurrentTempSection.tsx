@@ -85,7 +85,7 @@ const CurrentTempSection = ({
                     ? `${convertTimeDoubleDigits(
                         currentTimeStamp?.getMonth() + 1
                       )}/${convertTimeDoubleDigits(
-                        currentTimeStamp?.getDay()
+                        currentTimeStamp?.getDate()
                       )}/${convertTimeDoubleDigits(
                         currentTimeStamp?.getFullYear()
                       )}`
