@@ -1,11 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { convertTimeDoubleDigits } from "@/utils/convertTimeDoubleDigits";
 import Header from "@/components/Header";
 import CurrentTempTime from "@/components/CurrentTempTime";
 import HistoricalTempChart from "@/components/HistoricalTempChart";
 import Footer from "@/components/Footer";
+import { convertTimeDoubleDigits } from "@/utils/convertTimeDoubleDigits";
+import { trimHourlyArray } from "@/utils/trimHourlyArray";
 import {
   LATITUDE,
   LONGITUDE,
@@ -13,18 +14,22 @@ import {
   FETCH_INTERVAL_IN_MS,
 } from "@/data/constants";
 
+interface hourlyObjectData {
+  temperature_2m: number[];
+  time: Date[];
+}
+
 const App = () => {
   const [isPaused, setIsPaused] = useState<boolean>(false);
   const [currentTemp, setCurrentTemp] = useState<number | undefined>(undefined);
   const [currentTimeStamp, setCurrentTimeStamp] = useState<Date | null>(null);
   const [isTempsVisible, setIsTempsVisible] = useState<boolean>(false);
-  const [hourlyDataArr, setHourlyDataArr] = useState([]);
+  const [hourlyDataArr, setHourlyDataArr] = useState<any>([]);
 
   const getTempData = async (): Promise<void> => {
     try {
       const timeStamp = new Date();
       setCurrentTimeStamp(timeStamp);
-
       const currentYear = timeStamp.getFullYear().toString();
       const currentMonth = convertTimeDoubleDigits(timeStamp.getMonth() + 1);
       const currentDate = timeStamp.getDate();
@@ -36,7 +41,8 @@ const App = () => {
         `https://api.open-meteo.com/v1/forecast?latitude=${LATITUDE}&longitude=${LONGITUDE}&current_weather=true&hourly=temperature_2m&start_date=${currentYear}-${currentMonth}-${startDate}&end_date=${currentYear}-${currentMonth}-${currentDate}&timezone=America%2FNew_York`
       );
       const data = await query.json();
-      setHourlyDataArr(data.hourly);
+      console.log(data.current_weather.time);
+      setHourlyDataArr(trimHourlyArray(data.hourly, data.current_weather.time));
       setCurrentTemp(data.current_weather.temperature);
     } catch (err: unknown) {
       console.log(err);
