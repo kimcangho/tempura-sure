@@ -2,7 +2,7 @@
 
 TempuraSure is a web application dashboard that retrieves, saves and tabulates hourly temperature data for Toronto, CA.
 
-TempuraSure is live! Check it out [here](https://tempura-sure.vercel.app/)!
+TempuraSure is live! Check it out [here](https://tempura-sure.vercel.app/){:target="_blank"}!
 
 ## Table of Contents
 
@@ -19,7 +19,7 @@ TempuraSure is live! Check it out [here](https://tempura-sure.vercel.app/)!
 ## General Information
 
 - This web application was developed as an exercise for Virgl.io.
-- This application makes calls at a given interval to [`https://open-meteo.com/`](https://open-meteo.com/).
+- This application makes calls at a given interval to [`https://open-meteo.com/`](https://open-meteo.com/){:target="_blank"}.
 
 ## Technologies Used
 
@@ -68,7 +68,7 @@ Desktop View with Snapshot Table
 
 ## Usage
 
-Check out this video for a quick demo! https://www.loom.com/share/7bce74feb0b4471b83c727a843ab618a?sid=d2056a52-8be2-47af-bd43-c79d9e442658
+Check out this video for a quick demo! https://www.loom.com/share/7bce74feb0b4471b83c727a843ab618a?sid=d2056a52-8be2-47af-bd43-c79d9e442658{:target="_blank"}
 
 ## Setup
 
@@ -104,10 +104,10 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Acknowledgements
 
-[Virgl.io](https://www.virgl.io/) for the opportunity to tackle this exercise.
+[Virgl.io](https://www.virgl.io/){:target="_blank"} for the opportunity to tackle this exercise.
 
 ## Contact
 
-Created by [Kent K.C. Ho](https://www.linkedin.com/in/kentkcho/) - feel free to contact me!
+Created by [Kent K.C. Ho](https://www.linkedin.com/in/kentkcho/){:target="_blank"} - feel free to contact me!
 
-> Written with [StackEdit](https://stackedit.io/).
+> Written with [StackEdit](https://stackedit.io/){:target="_blank"}.
