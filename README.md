@@ -1,6 +1,8 @@
 # TempuraSure
 
-> TempuraSure is a web application dashboard that retrieves, saves and tabulates hourly temperature data for Toronto, CA.
+TempuraSure is a web application dashboard that retrieves, saves and tabulates hourly temperature data for Toronto, CA.
+
+TempuraSure is live! Check it out [here](https://tempura-sure.vercel.app/)!
 
 ## Table of Contents
 
@@ -66,7 +68,7 @@ Desktop View with Snapshot Table
 
 ## Usage
 
-Check out this vidoe for a quick demo! https://www.loom.com/share/7bce74feb0b4471b83c727a843ab618a?sid=d2056a52-8be2-47af-bd43-c79d9e442658
+Check out this video for a quick demo! https://www.loom.com/share/7bce74feb0b4471b83c727a843ab618a?sid=d2056a52-8be2-47af-bd43-c79d9e442658
 
 ## Setup
 
@@ -99,11 +101,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - Overall knowledge and practice with Next.js and integrating Prisma database.
 - Chart.js / react-chartjs-2 implementation and styling.
 - An extra helping of deep fried seafood to maintain developer satiation.
-
-Known issues:
-
-- Touch events interfering with scrolling in lineup page.
-- Deployment issues where cookies are unable to be received by front-end from back-end.
 
 ## Acknowledgements
 
