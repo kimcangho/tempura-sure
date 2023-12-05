@@ -38,10 +38,10 @@ export default function Page() {
         <button
           type="button"
           onClick={() => {
-            throw new Error("Sentry Frontend Error");
+            throw new Error("Sentry Frontend Error - Prod test");
           }}
         >
-          Throw error
+          Throw error - Prod?
         </button>
 
         <p>Get started by sending us a sample error:</p>
